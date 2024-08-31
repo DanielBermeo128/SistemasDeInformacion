@@ -1,0 +1,29 @@
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		try {
+			Conexion cn = new Conexion();
+			System.out.println("Escribe tu nombre:");
+			String nombre = sc.next();
+			
+			if(cn.existe(nombre)) {
+				cn.aumentarIncidencia(nombre);
+				System.out.println("Hola " + nombre + "por " + cn.getIncidencias(nombre) + "° vez");
+				
+			}else {
+				cn.crearRegistro(nombre);
+				System.out.println("El nombre "+ nombre +" ha sido añadido a la DB\nHola " + nombre + " !!!");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+}
