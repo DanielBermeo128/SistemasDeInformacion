@@ -33,12 +33,14 @@ public class Main {
 			// Creacion del nombre del archivo asegurando irrepetibilidad
 			String nombreArchivo = nombre + cn.getIncidencias(nombre) + ".txt";
 			// Creacion del archivo en la carpeta del proyecto llamada Archivos
-			File archivo = new File("Archivos/"+ nombreArchivo);
+			String pt ="Archivos/"+ nombreArchivo ;
+			File archivo = new File(pt);
 			// Creacion del objeto escribiente
 			FileWriter escribir = new FileWriter(archivo,true);
 			// Se escribe el mensaje segun el caso
 			escribir.write(mensaje);
 			escribir.close();
+			System.out.println("Su saludo ha sido guardado en: " + pt);
 			cn.cerrarConexion();
 			
 		} catch (ClassNotFoundException | SQLException e) {
